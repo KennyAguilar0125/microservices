@@ -1,0 +1,16 @@
+version: '3'
+services:
+  ##MySql database agroTech
+  db-plantas:
+    container_name: db-agroTec
+    image: mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: agroTechdb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: 1234
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3306:3306
+    expose:
+      - 3306
