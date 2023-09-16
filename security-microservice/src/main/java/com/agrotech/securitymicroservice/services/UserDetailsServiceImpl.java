@@ -2,6 +2,7 @@ package com.agrotech.securitymicroservice.services;
 
 import com.agrotech.securitymicroservice.utilities.GeneralUtilitiesSecurity;
 import com.agrotech.usuariosmicroservice.entities.Usuarios;
+import com.agrotech.utilities.GeneralUtilities;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,12 +15,10 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-import static com.agrotech.utilities.GeneralUtilities.usuariosMicroservice;
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
 
-    private static final String usuarios = usuariosMicroservice + "usuarios";
+    private static final String usuarios = GeneralUtilities.usuariosMicroservice + "usuarios";
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
