@@ -25,6 +25,7 @@
 		<module>plantas-microservice</module>
 		<module>agro-microservice</module>
 		<module>modelos</module>
+		<module>security-microservice</module>
 		<module>usuarios-microservice</module>
 	</modules>
 
