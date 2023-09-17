@@ -55,9 +55,9 @@ public class Usuarios {
     @Temporal(TemporalType.TIMESTAMP)
     private Date actualizadoEn;
 
-    @ManyToMany(fetch = FetchType.EAGER, targetEntity = Roles.class, cascade = CascadeType.PERSIST)
-    @JoinTable(name = "usuario_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Roles> roles;
+    //@ManyToMany(fetch = FetchType.EAGER, targetEntity = Roles.class, cascade = CascadeType.PERSIST)
+    //@JoinTable(name = "usuario_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    //private Set<Roles> roles;
 
     @Override
     public String toString() {
@@ -71,7 +71,6 @@ public class Usuarios {
                 ", activo=" + activo +
                 ", creadoEn=" + creadoEn +
                 ", actualizadoEn=" + actualizadoEn +
-                ", roles=" + roles +
                 '}';
     }
 }

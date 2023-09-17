@@ -43,7 +43,7 @@ public class UsuariosService {
                 .activo(true)
                 .creadoEn(new Timestamp(System.currentTimeMillis()))
                 .actualizadoEn(new Timestamp(System.currentTimeMillis()))
-                .roles(roles)
+                //.roles(roles)
                 .build();
 
         log.info("Usuario added: {}", usuario);
