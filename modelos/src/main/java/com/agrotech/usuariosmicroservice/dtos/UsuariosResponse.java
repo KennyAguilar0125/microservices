@@ -8,10 +8,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.util.Set;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuariosRequest {
+@Builder
+public class UsuariosResponse {
 
     @NotEmpty
     private String nombre;
@@ -24,9 +26,4 @@ public class UsuariosRequest {
 
     @Email
     private String correo;
-
-    @NotEmpty
-    private String password;
-
-    private Set<String> roles;
 }

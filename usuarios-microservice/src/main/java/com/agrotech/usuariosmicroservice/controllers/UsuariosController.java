@@ -1,6 +1,8 @@
 package com.agrotech.usuariosmicroservice.controllers;
 
+import com.agrotech.usuariosmicroservice.dtos.LoginRequest;
 import com.agrotech.usuariosmicroservice.dtos.UsuariosRequest;
+import com.agrotech.usuariosmicroservice.dtos.UsuariosResponse;
 import com.agrotech.usuariosmicroservice.entities.Usuarios;
 import com.agrotech.usuariosmicroservice.services.UsuariosService;
 import jakarta.validation.Valid;
@@ -15,16 +17,10 @@ public class UsuariosController {
 
     private final UsuariosService usuariosService;
 
-    @GetMapping("/hello")
+    @PostMapping("/login")
     @ResponseStatus(HttpStatus.OK)
-    public String hello(){
-        return "Hellow World Not Secured";
-    }
-
-    @GetMapping("/helloSecured")
-    @ResponseStatus(HttpStatus.OK)
-    public String helloSecured(){
-        return "Hellow World Secured";
+    public UsuariosResponse login(@Valid @RequestBody LoginRequest loginRequest){
+        return this.usuariosService.login(loginRequest);
     }
 
     @PostMapping("/createUser")

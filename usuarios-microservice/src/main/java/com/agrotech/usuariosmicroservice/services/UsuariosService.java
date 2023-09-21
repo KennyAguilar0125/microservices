@@ -1,7 +1,8 @@
 package com.agrotech.usuariosmicroservice.services;
 
-import com.agrotech.plantasmicroservice.entities.Plagas;
+import com.agrotech.usuariosmicroservice.dtos.LoginRequest;
 import com.agrotech.usuariosmicroservice.dtos.UsuariosRequest;
+import com.agrotech.usuariosmicroservice.dtos.UsuariosResponse;
 import com.agrotech.usuariosmicroservice.entities.Roles;
 import com.agrotech.usuariosmicroservice.entities.Usuarios;
 import com.agrotech.usuariosmicroservice.enums.ERole;
@@ -22,6 +23,22 @@ public class UsuariosService {
 
     private final UsuariosRepository repository;
     private final PasswordEncoder passwordEncoder;
+
+    public UsuariosResponse login(LoginRequest login){
+        Usuarios usuario = findOneByCorreo(login.getCorreo());
+        if(usuario != null){
+            if(verificarPassword(login.getPassword(), usuario.getPassword())){
+                return UsuariosResponse.builder()
+                        .nombre(usuario.getNombre())
+                        .apellido(usuario.getApellido())
+                        .cedula(usuario.getCedula())
+                        .correo(usuario.getCorreo())
+                        .build();
+            }
+            return null;
+        }
+        return null;
+    }
 
     public Usuarios create(UsuariosRequest dto) {
 
@@ -60,4 +77,7 @@ public class UsuariosService {
         return repository.findByCorreo(correo).orElse(null);
     }
 
+    public boolean verificarPassword(String passwordTexto, String passwordCifrada){
+        return passwordEncoder.matches(passwordTexto, passwordCifrada);
+    }
 }
